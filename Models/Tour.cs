@@ -18,7 +18,7 @@ namespace TempleTours.Models
         /// Read only database field. PK of the Tour.
         /// </summary>
         [Key]
-        public int TourId { get; }
+        public int TourId { get; set; }
 
         /// <summary>
         /// Date and Time of the Tour.

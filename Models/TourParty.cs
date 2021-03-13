@@ -15,7 +15,7 @@ namespace TempleTours.Models
         /// Read-only database field. PK of the instance.
         /// </summary>
         [Key]
-        public int TourPartyId { get; }
+        public int TourPartyId { get; set; }
 
         /// <summary>
         /// First name of the person whose party it is.
