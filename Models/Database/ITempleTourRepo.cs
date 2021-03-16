@@ -7,6 +7,8 @@ namespace TempleTours.Models.Database
 {
     public interface ITempleTourRepo
     {
-        IQueryable<Tour> Tours { get; }
+        IQueryable<Tour> Tours { get; set; }
+
+        IQueryable<TourParty> Parties { get; set; }
     }
 }

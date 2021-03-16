@@ -15,5 +15,7 @@ namespace TempleTours.Models.Database
         }
 
         public IQueryable<Tour> Tours => _context.Tours;
+
+        public IQueryable<TourParty> Parties { get; set; }
     }
 }
