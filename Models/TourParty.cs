@@ -35,5 +35,18 @@ namespace TempleTours.Models
         [Required]
         [Display(Description = "How many people are in your party (including yourself)?")]
         public int PartySize { get; set; }
+
+        /// <summary>
+        /// Email address to reach the party leader at.
+        /// </summary>
+        [Required]
+        [EmailAddress]
+        public string EmailAddress { get; set; }
+
+        /// <summary>
+        /// Optional. Phone number to reach the party leader.
+        /// </summary>
+        [Phone]
+        public string PhoneNumber { get; set; }
     }
 }
