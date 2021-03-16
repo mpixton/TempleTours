@@ -1,0 +1,17 @@
+﻿
+
+@model TourParty
+
+<div>
+    <form asp-action="UserForm" method="post">
+        
+        <input asp-for="FirstName" />
+
+        <input asp-for="LastName" />
+
+        <input asp-for="PartySize" />
+
+        <button type="submit">Confirm Booking</button>
+        <div asp-validation-summary="All"></div>
+    </form>
+</div>
