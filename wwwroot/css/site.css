@@ -69,3 +69,11 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.bg-custom-2 {
+    background-image: linear-gradient(15deg, #ccbaa8 50%, #f3f5f8 100%);
+}
+
+.bg-custom-3 {
+    background-color: #ccbaa8;
+}
