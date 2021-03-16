@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace TempleTours.Models.Database
 {
+    /// <summary>
+    /// Makes the abstract version of the DB concrete.
+    /// </summary>
     public class EFTempleTourRepo : ITempleTourRepo
     {
         private TempleTourDbContext _context;
@@ -14,6 +17,7 @@ namespace TempleTours.Models.Database
             _context = context;
         }
 
+        // Allows querying the DbSet in LINQ.
         public IQueryable<Tour> Tours => _context.Tours;
 
         public IQueryable<TourParty> Parties { get; set; }
