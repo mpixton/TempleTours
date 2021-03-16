@@ -14,7 +14,7 @@ namespace TempleTours.Controllers
     public class HomeController : Controller
     {
         private ITempleTourRepo _repository;
-        //private TempleTourDbContext _context;
+        private TempleTourDbContext _context;
         public Tour UnfinishedTour { get; set; }//used as a placeholder
 
         private readonly ILogger<HomeController> _logger;
@@ -23,7 +23,7 @@ namespace TempleTours.Controllers
         {
             _logger = logger;
             _repository = repo;
-            //_context = context;
+            _context = context;
         }
 
        
@@ -50,33 +50,47 @@ namespace TempleTours.Controllers
                 .OrderBy(t => t.TourTime));
         }
         [HttpPost]
-        public IActionResult SignUp(DateTime dateTime)
+        public IActionResult SignUp(Tour tour)
         {
-            
-            ////if (ModelState.IsValid)//validates tour, also might not need this depending on the date and time
-            //{
-            //    UnfinishedTour = (Tour)_repository.Tours.Where(t => t.TourTime == dateTime);
-            //    //sets tour to UnfinishedTour variable so we can use it in UserForm 
-            //    //and then save the finished product to the database
 
-            //    return RedirectToAction("UserForm");//if valid returns UserForm
-            //}
+            if (ModelState.IsValid)//validates tour, also might not need this depending on the date and time
+            {
+                UnfinishedTour = tour;
+                //sets tour to UnfinishedTour variable so we can use it in UserForm 
+                //and then save the finished product to the database
+
+                return RedirectToAction("UserForm");//if valid returns UserForm
+            }
             return View();//when submitted
         }
         [HttpPost]
         public IActionResult UserForm(TourParty tourParty)
         {
-            //if (ModelState.IsValid)//validates tour
-            //{
-               
+            if (ModelState.IsValid)//validates tour
+            {
+                
                 //UnfinishedTour.AddTourist(tourParty);
                 //_repository.Tours.Where(t => t.TourId == UnfinishedTour.TourId);
-                
+
+                //Product prodToUpdate = context.Products
+                //     .Where(p => p.ProductID == product.ProductID).FirstOrDefault();
+
+                if (UnfinishedTour != null)
+                {
+                    Tour tour = _context.Tours.First(t => t.TourId == UnfinishedTour.TourId);
+                    tour.AddTourist(tourParty);
+                    _context.SaveChanges();
+                }
+
+
+
+
                
-  
+
+
                 //save changes to db
-               // return RedirectToAction("Index");//if valid returns UserForm
-            //}
+                return RedirectToAction("Index");//if valid returns UserForm
+            }
             return View();
         }
 
