@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempleTours.Models.Database;
 
 namespace TempleTours.Migrations
 {
     [DbContext(typeof(TempleTourDbContext))]
-    partial class TempleTourDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210316230123_0002")]
+    partial class _0002
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
