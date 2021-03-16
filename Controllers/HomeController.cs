@@ -50,12 +50,12 @@ namespace TempleTours.Controllers
                 .OrderBy(t => t.TourTime));
         }
         [HttpPost]
-        public IActionResult SignUp(Tour tour)
+        public IActionResult SignUp(int tourId)
         {
 
             if (ModelState.IsValid)//validates tour, also might not need this depending on the date and time
             {
-                UnfinishedTour = tour;
+                UnfinishedTour = _context.Tours.First(t => t.TourId == tourId);
                 //sets tour to UnfinishedTour variable so we can use it in UserForm 
                 //and then save the finished product to the database
 
