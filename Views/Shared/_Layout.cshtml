@@ -20,7 +20,9 @@
         <nav class="navbar navbar-expand-sm navbar-light bg-custom-2 shadow p-2 mb-2 bg-white rounded">
             <!--How do I make this image link back to the home page?-->
             <span style="padding-left:20px; padding-right: 30px">
-                <i class="fas fa-place-of-worship fa-lg"></i>
+                <a asp-action="Index" style="color: black">
+                    <i class="fas fa-place-of-worship fa-lg"></i>
+                </a>
             </span>
 
             <div class="collapse navbar-collapse" id="navbarText">
@@ -29,7 +31,7 @@
                         <a class="nav-link" style="font-size:22px" asp-action="Index" >Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:22px" href="#">Features</a>
+                        <a class="nav-link" style="font-size:22px" asp-action="Appointments">Features</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:22px" href="#">Pricing</a>
