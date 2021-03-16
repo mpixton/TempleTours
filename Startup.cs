@@ -59,8 +59,12 @@ namespace TempleTours
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "TourSignUp",
+                    pattern: "Tours/{id}",
+                    new { Controller = "Home", action = "SignUp" }
+                    );
+
+                endpoints.MapDefaultControllerRoute();
             });
 
             SeedData.EnsurePopulated(app);
