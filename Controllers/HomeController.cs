@@ -41,13 +41,11 @@ namespace TempleTours.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
+
+
             
-
-
             //This one should be ready to go
-            return View(_repository.Tours
-                .Where(t => t.Parties == null)
-                .OrderBy(t => t.TourTime));
+            return View(_repository.Tours);
         }
         [HttpPost]
         public IActionResult SignUp(int tourId)
@@ -103,9 +101,7 @@ namespace TempleTours.Controllers
         public IActionResult Appointments()
         {
             //this one should be ready
-            return View(_repository.Tours
-                .Where(t => t.Parties != null)
-                .OrderBy(t => t.TourTime));
+            return View(_repository.Tours);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
