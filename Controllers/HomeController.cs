@@ -45,7 +45,7 @@ namespace TempleTours.Controllers
 
             
             //This one should be ready to go
-            return View(_repository.Tours);
+            return View(_repository.Tours.OrderBy(t => t.TourTime));
         }
         [HttpPost]
         public IActionResult SignUp(int tourId)
@@ -53,11 +53,11 @@ namespace TempleTours.Controllers
 
             if (ModelState.IsValid)//validates tour, also might not need this depending on the date and time
             {
-                UnfinishedTour = _context.Tours.First(t => t.TourId == tourId);
+                UnfinishedTour = _repository.Tours.First(t => t.TourId == tourId);
                 //sets tour to UnfinishedTour variable so we can use it in UserForm 
                 //and then save the finished product to the database
 
-                return RedirectToAction("UserForm");//if valid returns UserForm
+                return RedirectToAction("UserForm", UnfinishedTour.TourId);//if valid returns UserForm
             }
             return View();//when submitted
         }
@@ -93,7 +93,7 @@ namespace TempleTours.Controllers
         }
 
         [HttpGet]
-        public IActionResult UserForm()
+        public IActionResult UserForm(int tourId)
         {
             return View();
         }
@@ -101,7 +101,7 @@ namespace TempleTours.Controllers
         public IActionResult Appointments()
         {
             //this one should be ready
-            return View(_repository.Tours);
+            return View(_repository.Tours.OrderBy(t => t.TourTime));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
