@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace TempleTours.Models.Database
 {
+    /// <summary>
+    /// Decouples the database from the implementation of the database. Essentially abstracts away the DB layer.
+    /// </summary>
     public interface ITempleTourRepo
-    {
-        IQueryable<Tour> Tours { get; set; }
+    { 
+        IQueryable<Tour> Tours { get; }
 
-        IQueryable<TourParty> Parties { get; set; }
+        IQueryable<TourParty> Parties { get; }
     }
 }
