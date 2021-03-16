@@ -1,0 +1,20 @@
+﻿@{ 
+
+}
+
+@model IEnumerable<Tour>
+
+<div>
+    @foreach (var t in Model)
+    {
+        @if (t.Parties == null)
+        {
+            <p>@t.TourTime</p>
+            <form asp-action="SignUp" method="post">
+                <input hidden name="tourId" value="@t.TourId" />
+                <button type="submit" class="btn btn-outline-dark">Sign Up</button>
+            </form>
+        }
+
+    }
+</div>
