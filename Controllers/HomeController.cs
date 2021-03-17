@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TempleTours.Models;
 using TempleTours.Models.Database;
+using TempleTours.Models.ViewModels;
 
 namespace TempleTours.Controllers
 {
@@ -30,6 +31,7 @@ namespace TempleTours.Controllers
 
         public IActionResult Index()
         {
+           
             //this one is ready
             return View();
         }
@@ -41,11 +43,10 @@ namespace TempleTours.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
-
-
+            
             
             //This one should be ready to go
-            return View(_repository.Tours.OrderBy(t => t.TourTime));
+            return View(_context.Tours.Where(t => t.Parties.Count == 0).OrderBy(t => t.TourTime));
         }
         [HttpPost]
         public IActionResult SignUp(int tourId)
@@ -57,12 +58,16 @@ namespace TempleTours.Controllers
                 //sets tour to UnfinishedTour variable so we can use it in UserForm 
                 //and then save the finished product to the database
 
-                return RedirectToAction("UserForm", UnfinishedTour.TourId);//if valid returns UserForm
+                return View("UserForm", new SignUpViewModel
+                {
+                    Tour = _context.Tours.First(t => t.TourId == tourId),
+                    Party = new TourParty()
+                });//if valid returns UserForm
             }
             return View();//when submitted
         }
         [HttpPost]
-        public IActionResult UserForm(TourParty tourParty)
+        public IActionResult UserForm(SignUpViewModel signUp)
         {
             if (ModelState.IsValid)//validates tour
             {
@@ -73,12 +78,13 @@ namespace TempleTours.Controllers
                 //Product prodToUpdate = context.Products
                 //     .Where(p => p.ProductID == product.ProductID).FirstOrDefault();
 
-                if (UnfinishedTour != null)
-                {
-                    Tour tour = _context.Tours.First(t => t.TourId == UnfinishedTour.TourId);
-                    tour.AddTourist(tourParty);
+                //if (UnfinishedTour != null)
+                //{
+                    Tour tour = _context.Tours.First(t => t.TourId == signUp.Tour.TourId);
+                    tour.Parties = new List<TourParty>();
+                    tour.AddTourist(signUp.Party);
                     _context.SaveChanges();
-                }
+                //}
 
 
 
@@ -93,15 +99,16 @@ namespace TempleTours.Controllers
         }
 
         [HttpGet]
-        public IActionResult UserForm(int tourId)
+        public IActionResult UserForm()
         {
+
             return View();
         }
 
         public IActionResult Appointments()
         {
             //this one should be ready
-            return View(_repository.Tours.OrderBy(t => t.TourTime));
+            return View(_repository.Tours.Where(t => t.Parties.Count > 0).OrderBy(t => t.TourTime));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
