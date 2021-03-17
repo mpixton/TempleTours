@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-// TODO: talk with team about adding a max number of people in appt.
+/// TODO: talk with team about adding a max number of people in appt.
 namespace TempleTours.Models
 {
     /// <summary>
@@ -32,12 +32,13 @@ namespace TempleTours.Models
         /// </summary>
         public List<TourParty> Parties { get; set; }
 
-        // TODO: add a property that returns the size of all parties for this slot.
+        /// TODO: add a property that returns the size of all parties for this slot.
 
         /// <summary>
         /// Adds a party to the Tour Time.
         /// </summary>
         /// <param name="party">TourParty instance to add to the list of attending Tour Parties.</param>
+        /// 
         public void AddTourist (TourParty party)
         {
             Parties.Add(party);

@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="mono_crash.11a6748113.0.json" />
+    <Content Remove="mono_crash.11a6748113.0.json" />
+    <Content Remove="mono_crash.11a6748113.0.json" />
+    <Content Remove="mono_crash.11a6748113.0.json" />
+  </ItemGroup>
 </Project>

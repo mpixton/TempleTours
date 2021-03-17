@@ -18,7 +18,6 @@
 
     <header style="padding-bottom: 70px">
         <nav class="navbar navbar-expand-sm navbar-light bg-custom-2 shadow p-2 mb-2 bg-white rounded">
-            <!--How do I make this image link back to the home page?-->
             <span style="padding-left:20px; padding-right: 30px">
                 <a asp-action="Index" style="color: black">
                     <i class="fas fa-place-of-worship fa-lg"></i>
@@ -43,17 +42,13 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-
-        @*<footer class="py-3 bg-dark text-white-50 fixed-bottom" style="margin-top: 100px; opacity: .9">
-        <div class="container-fluid navbar-brand text-center">
-            <small>Copyright &copy; 2021 - Thomas Fife, Inc.</small>
-        </div>*@
 <footer class="border-top footer text-muted" style="background-color: rgb(204,187,168); margin-top: 200px; opacity: .8">
     <div class="container-fluid text-center">
         &copy; 2021 - TempleTours - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
