@@ -7,18 +7,16 @@
 <div class=" mx-auto text-center">
     @foreach (var t in Model)
     {
-        @if (t.Parties == null)
-        {
-            <div class=" text-center row justify-content-center">
-                
-                <form asp-action="SignUp" method="post" class="p-3">
-                    <input hidden name="tourId" value="@t.TourId" />
-                    <label for="signup" >@t.TourTime</label>
-                    <button type="submit" name="signup" class="btn btn-outline-primary shadow">Sign Up</button>
-                </form>
-            </div>
-            <br /><br />
-        }
+        <div class=" text-center row justify-content-center">
+
+            <form asp-action="SignUp" method="post" class="p-3">
+                <input hidden name="tourId" value="@t.TourId" />
+                <label for="signup">@t.TourTime</label>
+                <button type="submit" name="signup" class="btn btn-outline-primary shadow">Sign Up</button>
+            </form>
+        </div>
+        <br /><br />
+
 
     }
 </div>

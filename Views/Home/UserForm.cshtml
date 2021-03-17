@@ -1,9 +1,10 @@
 ﻿
 
-@model TourParty
+@model SignUpViewModel
 
 <div class="container text-center">
     <form asp-action="UserForm" method="post" class="mx-auto">
+        <input type="hidden" asp-for="Tour.TourId" />
         <label asp-for="FirstName" class="text-right">First Name:</label>
         <input asp-for="FirstName" />
 
