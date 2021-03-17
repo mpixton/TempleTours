@@ -40,10 +40,10 @@ namespace TempleTours.Models.Database
                                     hour: iInner,
                                     minute: 00,
                                     second: 00
-                                    )
+                                    ),
+                                Parties = new List<TourParty>()
                             }
-                        )
-                        ;
+                        );
                     }
                 }
 
