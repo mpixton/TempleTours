@@ -7,12 +7,12 @@
 <div class=" mx-auto text-center">
     @foreach (var t in Model)
     {
-        <div class=" text-center row justify-content-center">
+        <div class="table text-center row justify-content-center">
 
-            <form asp-action="SignUp" method="post" class="p-3">
+            <form asp-action="SignUp" method="post" class="p-3 rounded shadow">
                 <input hidden name="tourId" value="@t.TourId" />
-                <label for="signup">@t.TourTime</label>
-                <button type="submit" name="signup" class="btn btn-outline-primary shadow">Sign Up</button>
+                <label for="signup" class="p-2">@t.TourTime</label>
+                <button type="submit" name="signup" class="btn btn-primary shadow">Sign Up</button>
             </form>
         </div>
         <br /><br />
