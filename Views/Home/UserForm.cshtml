@@ -2,16 +2,35 @@
 
 @model TourParty
 
-<div>
-    <form asp-action="UserForm" method="post">
-        
+<div class="container text-center">
+    <form asp-action="UserForm" method="post" class="mx-auto">
+        <label asp-for="FirstName" class="text-right">First Name:</label>
         <input asp-for="FirstName" />
 
+        <br />
+
+        <label asp-for="LastName" class="text-right">Last Name:</label>
         <input asp-for="LastName" />
 
+        <br />
+
+        <label asp-for="EmailAddress" class=" text-right">Email:</label>
+        <input asp-for="EmailAddress" />
+
+        <br />
+
+        <label asp-for="PhoneNumber" class=" text-right">Phone:</label>
+        <input asp-for="PhoneNumber" />
+
+        <br />
+
+        <label asp-for="PartySize" class=" text-right">Size of Group Attending:</label>
         <input asp-for="PartySize" />
 
-        <button type="submit">Confirm Booking</button>
+        <br /><br />
+
+        <button type="submit" class="btn btn-outline-primary shadow">Confirm Sign Up</button>
         <div asp-validation-summary="All"></div>
+
     </form>
 </div>
