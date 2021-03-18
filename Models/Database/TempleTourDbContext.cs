@@ -19,6 +19,6 @@ namespace TempleTours.Models.Database
         /// <summary>
         /// All Tour Parties that exist in the DB.
         /// </summary>
-        public DbSet<TourParty> Parties {get; set;}
+        public DbSet<Party> Parties {get; set;}
     }
 }
