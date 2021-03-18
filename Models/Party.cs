@@ -9,7 +9,7 @@ namespace TempleTours.Models
     /// <summary>
     /// Model for a group of people attending a Tour at the temple.
     /// </summary>
-    public class TourParty
+    public class Party
     {
         /// <summary>
         /// Read-only database field. PK of the instance.
@@ -18,16 +18,23 @@ namespace TempleTours.Models
         public int TourPartyId { get; set; }
 
         /// <summary>
-        /// First name of the person whose party it is.
+        /// Foreign Key of the Tour object associated with the Party. 
+        /// Explicitly sets the FK relationship to Tour.
         /// </summary>
         [Required]
-        public string FirstName { get; set; }
+        public int TourId { get; set; }
 
         /// <summary>
-        /// Last name of the person whose party it is.
+        /// Tour object the TourParty is associated with.
         /// </summary>
         [Required]
-        public string LastName { get; set; }
+        public Tour Tour { get; set; }
+
+        /// <summary>
+        /// Name of the party.
+        /// </summary>
+        [Required]
+        public string PartyName { get; set; }
 
         /// <summary>
         /// Total number of people in the Party.
