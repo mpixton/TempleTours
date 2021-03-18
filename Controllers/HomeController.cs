@@ -48,7 +48,7 @@ namespace TempleTours.Controllers
             //This one should be ready to go
             return View(from t in _repository.Tours
                         where t.TourTime > DateTime.Now
-                        where t.Parties.Any()
+                        where !t.Parties.Any()
                         orderby t.TourTime
                         select t
                         );
