@@ -21,37 +21,38 @@ namespace TempleTours.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TourParty",
+                name: "Parties",
                 columns: table => new
                 {
                     TourPartyId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    TourId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PartyName = table.Column<string>(type: "TEXT", nullable: false),
                     PartySize = table.Column<int>(type: "INTEGER", nullable: false),
-                    TourId = table.Column<int>(type: "INTEGER", nullable: true)
+                    EmailAddress = table.Column<string>(type: "TEXT", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TourParty", x => x.TourPartyId);
+                    table.PrimaryKey("PK_Parties", x => x.TourPartyId);
                     table.ForeignKey(
-                        name: "FK_TourParty_Tours_TourId",
+                        name: "FK_Parties_Tours_TourId",
                         column: x => x.TourId,
                         principalTable: "Tours",
                         principalColumn: "TourId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TourParty_TourId",
-                table: "TourParty",
+                name: "IX_Parties_TourId",
+                table: "Parties",
                 column: "TourId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TourParty");
+                name: "Parties");
 
             migrationBuilder.DropTable(
                 name: "Tours");
