@@ -20,6 +20,6 @@ namespace TempleTours.Models.Database
         // Allows querying the DbSet in LINQ.
         public IQueryable<Tour> Tours => _context.Tours;
 
-        public IQueryable<TourParty> Parties { get; set; }
+        public IQueryable<Party> Parties => _context.Parties;
     }
 }
