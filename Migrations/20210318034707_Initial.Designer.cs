@@ -9,14 +9,44 @@ using TempleTours.Models.Database;
 namespace TempleTours.Migrations
 {
     [DbContext(typeof(TempleTourDbContext))]
-    [Migration("20210316230123_0002")]
-    partial class _0002
+    [Migration("20210318034707_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.4");
+
+            modelBuilder.Entity("TempleTours.Models.Party", b =>
+                {
+                    b.Property<int>("TourPartyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PartyName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PartySize")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TourId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("TourPartyId");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("Parties");
+                });
 
             modelBuilder.Entity("TempleTours.Models.Tour", b =>
                 {
@@ -32,45 +62,15 @@ namespace TempleTours.Migrations
                     b.ToTable("Tours");
                 });
 
-            modelBuilder.Entity("TempleTours.Models.TourParty", b =>
+            modelBuilder.Entity("TempleTours.Models.Party", b =>
                 {
-                    b.Property<int>("TourPartyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EmailAddress")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PartySize")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("TourId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("TourPartyId");
-
-                    b.HasIndex("TourId");
-
-                    b.ToTable("Parties");
-                });
-
-            modelBuilder.Entity("TempleTours.Models.TourParty", b =>
-                {
-                    b.HasOne("TempleTours.Models.Tour", null)
+                    b.HasOne("TempleTours.Models.Tour", "Tour")
                         .WithMany("Parties")
-                        .HasForeignKey("TourId");
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
                 });
 
             modelBuilder.Entity("TempleTours.Models.Tour", b =>
