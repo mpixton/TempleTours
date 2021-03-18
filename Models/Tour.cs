@@ -27,21 +27,8 @@ namespace TempleTours.Models
         public DateTime TourTime { get; set; }
 
         /// <summary>
-        /// List of Tourists attending the Tour. Creates a one to many relationship between the entities. 
-        /// TourParty will have a FK field with the PK of the Tour instance they are attending.
+        /// List of Parties associated with the Tour time.
         /// </summary>
-        public List<TourParty> Parties { get; set; }
-
-        /// TODO: add a property that returns the size of all parties for this slot.
-
-        /// <summary>
-        /// Adds a party to the Tour Time.
-        /// </summary>
-        /// <param name="party">TourParty instance to add to the list of attending Tour Parties.</param>
-        /// 
-        public void AddTourist (TourParty party)
-        {
-            Parties.Add(party);
-        }
+        public List<Party> Parties { get; set; }
     }
 }
