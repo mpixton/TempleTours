@@ -1,33 +1,51 @@
 @model SignUpViewModel
 
 
-<div class="container text-center">
+<div class="container text-center mx-auto">
     <form asp-action="UserForm" method="post" class="mx-auto">
 
         <input asp-for="TourId" hidden type="number" value="@Model.TourId" />
-        <label asp-for="PartyName" class="text-right">Party Name:</label>
-        <input asp-for="PartyName" />
-
-        <br />
-
-        <label asp-for="EmailAddress" class=" text-right">Email:</label>
-        <input asp-for="EmailAddress" />
-
-        <br />
-
-        <label asp-for="PhoneNumber" class=" text-right">Phone:</label>
-        <input asp-for="PhoneNumber" />
-
-        <br />
-
-        <label asp-for="PartySize" class=" text-right">Size of Group Attending:</label>
-        <input asp-for="PartySize" />
+        <table class="table table-striped shadow">
+            <thead>
+                <tr>
+                    <th>
+                        <label asp-for="PartyName" class="text-right">Party Name:</label>
+                    </th>
+                    <th>
+                        <label asp-for="EmailAddress" class=" text-right">Email:</label>
+                    </th>
+                    <th>
+                        <label asp-for="PhoneNumber" class=" text-right">Phone:</label>
+                    </th>
+                    <th>
+                        <label asp-for="PartySize" class=" text-right">Size of Group Attending:</label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input asp-for="PartyName" />
+                    </td>
+                    <td>
+                        <input asp-for="EmailAddress" />
+                    </td>
+                    <td>
+                        <input asp-for="PhoneNumber" />
+                    </td>
+                    <td>
+                        <input asp-for="PartySize" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
 
         <br /><br />
 
         <button type="submit" class="btn btn-lg btn-primary shadow">Confirm Sign Up</button>
         <div asp-validation-summary="All"></div>
-
 
     </form>
 </div>
