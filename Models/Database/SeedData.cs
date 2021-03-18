@@ -41,7 +41,7 @@ namespace TempleTours.Models.Database
                                     minute: 00,
                                     second: 00
                                     ),
-                                Parties = new List<TourParty>()
+                                Parties = new List<Party>()
                             }
                         );
                     }
