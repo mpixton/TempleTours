@@ -26,7 +26,7 @@ namespace TempleTours.Models.Database
             {
                 List<Tour> toursToAdd = new List<Tour>();
 
-                for (int iOuter = 13; iOuter < 28; iOuter++)
+                for (int iOuter = 30; iOuter < 32; iOuter++)
                 {
                     for (int iInner = 8; iInner < 21; iInner++)
                     {
@@ -36,6 +36,27 @@ namespace TempleTours.Models.Database
                                 TourTime = new DateTime(
                                     year: 2021,
                                     month: 3,
+                                    day: iOuter,
+                                    hour: iInner,
+                                    minute: 00,
+                                    second: 00
+                                    ),
+                                Parties = new List<Party>()
+                            }
+                        );
+                    }
+                }
+
+                for(int iOuter = 1; iOuter < 30; iOuter++)
+                {
+                    for(int iInner = 8; iInner < 21; iInner++)
+                    {
+                        toursToAdd.Add(
+                            new Tour
+                            {
+                                TourTime = new DateTime(
+                                    year: 2021,
+                                    month: 4,
                                     day: iOuter,
                                     hour: iInner,
                                     minute: 00,
